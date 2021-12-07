@@ -28,14 +28,13 @@ getId.addEventListener("click", function (evt) {
 
 post.addEventListener("click", function (evt) {
   console.log("click");
-  const request = new Request("http://localhost:8090/students", {
+  fetch('http://localhost:8090/students', {
     method: "POST",
-    mode: "no-cors",
+    mode: "cors",
     credentials: "omit",
     cache: "no-cache",
     referrerPolicy: "no-referrer",
     headers: {
-      Host: "<calculated whan request is sent>",
       "Content-Type": "application/json",
       "cache-control": "no-cache",
     },
@@ -44,10 +43,8 @@ post.addEventListener("click", function (evt) {
       surname: "blanco",
       idCardNumber: "226123123J",
       birthDate: "1990-10-26",
-    }),
-  });
-  console.log("request =", request);
-  fetch(request)
+    })
+  })
     .then(function (response) {
       console.log("response =", response);
       return response.json();
