@@ -1,7 +1,8 @@
 const post = document.getElementById("post");
 const get = document.getElementById("get");
 const getId = document.getElementById("getId");
-const id = "61ae77a466d2ace3bab3039d";
+const deleteId = document.getElementById("deleteId");
+const id = "61af4328ecaaa575de270752";
 
 getId.addEventListener("click", function (evt) {
   console.log("boton");
@@ -78,3 +79,31 @@ get.addEventListener("click", function (evt) {
         console.error(err, "ERROR GET");
     });
 });
+
+// DELETE
+deleteId.addEventListener("click", function (evt) {
+    console.log("boton");
+    const request = new Request(`http://localhost:8090/students/${id}`, {
+      method: "DELETE",
+      credentials: "omit",
+      cache: "no-cache",
+      referrerPolicy: "no-referrer",
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+      },
+    });
+    console.log("request =", request);
+    fetch(request)
+      .then(function (response) {
+        console.log("response =", response);
+        return response;
+      })
+      .then(function (data) {
+        console.log("data = ", data);
+      })
+      .catch(function (err) {
+        console.error(err, "ERROR DELETE");
+      });
+  });
