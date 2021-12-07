@@ -29,6 +29,14 @@ getId.addEventListener("click", function (evt) {
 
 post.addEventListener("click", function (evt) {
   console.log("click");
+  const body = {
+    name: 'hgjgj',
+    surname: 'kjgigg',
+    idCardNumber: '8767764P',
+    birthDate: '2003-09-12',
+    password: 'djhsdfsflksgj'
+  }
+  console.log(body, 'body')
   fetch('http://localhost:8090/students', {
     method: "POST",
     mode: "cors",
@@ -39,12 +47,7 @@ post.addEventListener("click", function (evt) {
       "Content-Type": "application/json",
       "cache-control": "no-cache",
     },
-    body: JSON.stringify({
-      name: "fatima",
-      surname: "blanco",
-      idCardNumber: "226123123J",
-      birthDate: "1990-10-26",
-    })
+    body: JSON.stringify(body)
   })
     .then(function (response) {
       console.log("response =", response);
